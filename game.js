@@ -33,7 +33,7 @@ function loadImage() {
     imgGround.src = 'img/ground.png';
     // Cielo
     imgSky = new Image();
-    imgSky.src = 'img/Sky.png';
+    imgSky.src = 'img/sky.png';
     // Logo de la pucmm
     imgPucmm = new Image();
     imgPucmm.src = 'img/pucmm.png';
