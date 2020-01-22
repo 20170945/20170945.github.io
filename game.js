@@ -14,29 +14,40 @@ document.addEventListener('keydown', function(event) {
             level.points = 0;
         }
     }
-}) 
+})
 
 var imgPlayer, imgCloud, imgObs, imgGround, imgSky, imgPucmm;
 
 function loadImage() {
+    let contador = 0;
     // Carro
     imgPlayer = new Image();
+    imgPlayer.onload = function() { contador++; }
     imgPlayer.src = 'img/car.png';
     // Nube
     imgCloud = new Image();
+    imgCloud.onload = function() { contador++; }
     imgCloud.src = 'img/cloud.png';
     // Roca
     imgObs = new Image();
+    imgObs.onload = function() { contador++; }
     imgObs.src = 'img/rock.png';
     // Suelo
     imgGround = new Image();
+    imgGround.onload = function() { contador++; }
     imgGround.src = 'img/ground.png';
     // Cielo
     imgSky = new Image();
+    imgSky.onload = function() { contador++; }
     imgSky.src = 'img/sky.png';
     // Logo de la pucmm
     imgPucmm = new Image();
+    imgPucmm.onload = function() { contador++; }
     imgPucmm.src = 'img/pucmm.png';
+
+    while (contador<6) {
+
+    }
 }
 
 var wid = 700;
@@ -44,9 +55,9 @@ var hei = 300;
 var canvas, context;
 
 function startGame() {
+    loadImage();
     canvas = document.getElementById('canvas');
     context = canvas.getContext('2d');
-    loadImage();
 }
 
 function eraseCanvas() {
@@ -129,9 +140,9 @@ function gravity() {
             tcar.y = ground;
         } else {
             tcar.vy -= tcar.gravity;
-            tcar.y -= tcar.vy;          
+            tcar.y -= tcar.vy;
         }
-        
+
     }
 }
 
@@ -146,7 +157,7 @@ function collision() {
             graphicGround.speed = 0;
         }
     }
-}   
+}
 
 function pointsystem() {
     context.font = '30px impact';
@@ -166,8 +177,8 @@ setInterval(function(){
 }, 1000 / frame);
 
 function principal() {
-   eraseCanvas();   
-   gravity();   
+   eraseCanvas();
+   gravity();
    collision();
    groundLogic();
    cloudLogic();
