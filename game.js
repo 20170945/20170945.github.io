@@ -18,36 +18,38 @@ document.addEventListener('keydown', function(event) {
 
 var imgPlayer, imgCloud, imgObs, imgGround, imgSky, imgPucmm;
 
+function check() {
+    if (!imgPlayer.complete ||
+      !imgCloud.complete ||
+      !imgObs.complete ||
+      !imgGround.complete || 
+      !imgSky.complete ||
+      !imgPucmm.complete) {
+      setTimeout(check(), 3000);
+    }
+}
+
 function loadImage() {
-    let contador = 0;
     // Carro
     imgPlayer = new Image();
-    imgPlayer.onload = function() { contador++; }
     imgPlayer.src = 'img/car.png';
     // Nube
     imgCloud = new Image();
-    imgCloud.onload = function() { contador++; }
     imgCloud.src = 'img/cloud.png';
     // Roca
     imgObs = new Image();
-    imgObs.onload = function() { contador++; }
     imgObs.src = 'img/rock.png';
     // Suelo
     imgGround = new Image();
-    imgGround.onload = function() { contador++; }
     imgGround.src = 'img/ground.png';
     // Cielo
     imgSky = new Image();
-    imgSky.onload = function() { contador++; }
     imgSky.src = 'img/sky.png';
     // Logo de la pucmm
     imgPucmm = new Image();
-    imgPucmm.onload = function() { contador++; }
     imgPucmm.src = 'img/pucmm.png';
+    setTimeout(function(){ check() }, 3000);
 
-    while (contador<6) {
-
-    }
 }
 
 var wid = 700;
